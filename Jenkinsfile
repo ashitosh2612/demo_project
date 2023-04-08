@@ -17,7 +17,7 @@ pipeline{
          stage("Integration testing"){
             steps{
                 echo "======This is for Integration testing that are we performing=========="
-                sh 'mvn verfiy -DskiUnitTests'  
+                sh 'mvn verify -DskiUnitTests'  
             }
             
         }
