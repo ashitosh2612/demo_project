@@ -21,7 +21,7 @@ pipeline{
             }
             
         }
-        stage ("Maven build"){
+        stage("Maven build"){
             echo "======We clean what are the previous artifact are available======="
             sh 'mvn clean imstall'
 
