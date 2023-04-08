@@ -29,6 +29,16 @@ pipeline{
 
     }
     
-    
+    stage('Static code analysis'){
+            steps{
+                     withSonarQubeEnv(credentialsId: 'sonar-qude-api-key') {
+                        echo "======sonar qube integration testing=========="
+                      sh 'mvn clean package sonar:sonar'
+                   }
+  
+                  }
+
+        }
+
 }
 }
