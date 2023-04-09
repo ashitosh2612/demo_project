@@ -7,4 +7,4 @@ FROM openjdk:11.0
 WORKDIR /app
 COPY --from=build /demo-project/target/uber.jar /app/
 EXPOSE 9090
-ENTRYPOINT [ "java","jar","Uber.jar" ]
+CMD [ "java","jar","Uber.jar"  ]
