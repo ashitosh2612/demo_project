@@ -85,15 +85,13 @@ pipeline{
                }
                stage("image push to dockerhub"){
                steps{
-                withCredentials([usernameColonPassword(credentialsId: 'dockerhub', variable: 'docker')]) {
+               withCredentials([string(credentialsId: 'git_cred', variable: 'docker_cred')]) {
                     script{
-                        sh 'docker login -u ashitosh2612 -p ${docker}'
+                        sh 'docker login -u ashitosh2612 -p ${docker_cred}'
                         sh 'docker push ashitosh2612/$JOB_NAME:latest'
                     }
-   
-                           }
-                
-               }
+                     }
+                }
                }
 }
 }
