@@ -32,7 +32,7 @@ pipeline{
     stage('SonarQube analysis'){
             steps{
                     script{
-                        withSonarQubeEnv(credentialsId: 'sonar-qude-api-key') {
+                        withSonarQubeEnv(credentialsId: 'sonar') {
                         echo "======sonar qube integration testing=========="
                         sh 'mvn clean package sonar:sonar'
                             }    
