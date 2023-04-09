@@ -51,8 +51,10 @@ pipeline{
      stage('upload war file to nextus'){
         steps{
             script{
-                def readPomVersion = readMavenPom file: 'pom.xml'
-                def nexusRepo = readPomVersion.version.endSWith("SNAPSHOT") ? "demoapp-snapshot" : "demoapp-release"
+            def readPomVersion = readMavenPom file: 'pom.xml'
+
+            def nexusRepo = readPomVersion.version.endsWith("SNAPSHOT") ? "demoapp-snapshot" : "demoapp-release"
+            
                 nexusArtifactUploader artifacts: 
                 [
                     [
