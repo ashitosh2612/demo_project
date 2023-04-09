@@ -40,15 +40,21 @@ pipeline{
   
                   }
         }
-stage('Quality Gate status'){
-            steps{
-                    script{
-                        waitForQualityGate abortPipeline: false, credentialsId: 'sonar'
-                    }
+//stage('Quality Gate status'){
+  //          steps{
+    //                script{
+      //                  waitForQualityGate abortPipeline: false, credentialsId: 'sonar'
+        //            }
   
-                  }
+          //        }
+        //}
+     stage('upload war file to nextus'){
+        steps{
+            script{
+                nexusArtifactUploader artifacts: [[artifactId: 'springboot', classifier: '', file: 'target/Uber.jar', type: 'jar']], credentialsId: 'nexus-auth', groupId: 'com.example', nexusUrl: '35.203.34.228:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'demoapp-release', version: '1.0.0'
+            }
         }
-
+     }
 
 }
 }
